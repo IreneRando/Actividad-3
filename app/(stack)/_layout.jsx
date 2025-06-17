@@ -16,19 +16,19 @@ const StackLayout = () => {
                 },
             }}
         >
-            <Stack.Screen name="home/index" options={{
+            <Stack.Screen name="home" options={{
                 title: "Inicio"
             }}>
             </Stack.Screen>
-            <Stack.Screen name="Activity/[id]/index" options={({ route }) => ({
-                title: `${route.params.id}`,
+            <Stack.Screen name="Activity/[id]" options={({ route }) => ({
+                title: `Listado de actividades`,
             })}>
             </Stack.Screen>
-            <Stack.Screen name="Activity/[id]/ActivityDetail/[idActivity]/index" options={({ route }) => ({
-                title: `${route.params.id}`,
+            <Stack.Screen name="Activity/[id]/ActivityDetail/[idActivity]" options={({ route }) => ({
+                title: `${route.params.title}`,
             })}>
             </Stack.Screen>
-            <Stack.Screen name="Activity/[id]/ActivityDetail/[idActivity]/booking/index" options={({ route }) => ({
+            <Stack.Screen name="Activity/[id]/ActivityDetail/[idActivity]/booking" options={({ route }) => ({
                 title: `Selecciona tus dias`,
             })}>
             </Stack.Screen>

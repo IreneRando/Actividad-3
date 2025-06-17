@@ -27,8 +27,7 @@ const Activity = () => {
           className="border border-gray-300 rounded-md px-4 py-2 mb-4"
         />
 
-        {/* Picker no soporta className, usa style si quieres personalizarlo más */}
-        <View className="border border-gray-300 rounded-md mb-4">
+        <View>
           <Picker
             selectedValue={category}
             onValueChange={(value) => setCategory(value)}
@@ -59,7 +58,7 @@ const Activity = () => {
 
       <View className="gap-4">
         {activities.map((activity) => (
-          <ActivityCard key={activity.id} activity={activity} />
+          <ActivityCard key={activity.activity_id} activity={activity} />
         ))}
       </View>
     </ScrollView>
@@ -67,3 +66,4 @@ const Activity = () => {
 };
 
 export default Activity;
+
