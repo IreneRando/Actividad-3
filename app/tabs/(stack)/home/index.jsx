@@ -11,7 +11,7 @@ const HomeScreen = () => {
                 <Text className="text-center text-4xl mb-10">Outdoor Adventure</Text>
                 <Text className="text-center text-2xl mb-10">Descubre experiencias al aire libre y deportivas</Text>
 
-                <BotonPrincipal onPress={() => router.push('/(stack)/Activity/[id]')}>
+                <BotonPrincipal onPress={() => router.push('tabs/(stack)/Activity/[id]')}>
                     Reservar Actividades
                 </BotonPrincipal>
             </View>

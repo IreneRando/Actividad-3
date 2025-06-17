@@ -5,7 +5,7 @@ import {SafeAreaView} from "react-native";
 const App = () => {
     return (
         <SafeAreaView className="flex-1">
-            <Redirect href="/(stack)/home"/>
+            <Redirect href="/tabs"/>
         </SafeAreaView>
     );
 }
