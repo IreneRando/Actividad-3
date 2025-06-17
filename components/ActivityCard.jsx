@@ -13,20 +13,20 @@ const ActivityCard = ({ activity }) => {
   }
 
   return (
-    <View className="activity-card">
+    <View className="flex-1 flex-row gap-4 p-4 border rounded-lg bg-white">
       <Image
         source={{ uri: activity.images?.[0] }}
         accessibilityLabel={activity.name}
         style={{ width: 120, height: 120, borderRadius: 8 }}
       />
-      <View className="activity-card-content">
-        <Text className="activity-card-title">{activity.name}</Text>
-        <Text className="activity-card-description">
+      <View className="flex-1 gap-4">
+        <Text className="font-semibold text-[#2E8B57]">{activity.name}</Text>
+        <Text>
           {activity.short_description
             ? activity.short_description.slice(0, 100)
             : "Sin descripcion."}
         </Text>
-        <BotonPrincipal onPress={() => router.push('/(stack)/Activity/[id]/ActivityDetail/[idActivity]', { id: activity.id })}>
+        <BotonPrincipal className="" onPress={() => router.push('/(stack)/Activity/[id]/ActivityDetail/[idActivity]', { id: activity.id })}>
           Ver más
         </BotonPrincipal>
       </View>

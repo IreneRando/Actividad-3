@@ -37,80 +37,88 @@ const ActivityDetail = () => {
     );
   if (!activity)
     return (
-      <View style={{ padding: 16 }}>
+      <View>
         <Text>No se encontró la actividad.</Text>
       </View>
     );
 
   return (
-    <ScrollView style={{ padding: 16 }}>
-      <Text style={{ fontSize: 24, fontWeight: "bold", marginBottom: 12 }}>
+    <View className="flex-1 flex-column p-4 bg-white gap-4">
+      <Text className="text-xl font-bold text-[#2E8B57] mb-4">
         {activity.name}
       </Text>
-      <ScrollView horizontal style={{ marginBottom: 16 }}>
-        {activity.images?.map((imgUrl, index) => (
-          <Image
-            key={index}
-            source={{ uri: activity.images?.[0] }}
-            style={{
-              width: 200,
-              height: 150,
-              borderRadius: 8,
-              marginRight: 8,
-              backgroundColor: "#eee",
-            }}
-            accessibilityLabel={`Actividad ${index}`}
-          />
-        ))}
-      </ScrollView>
-      <Text style={{ marginBottom: 16 }}>{activity.long_description}</Text>
-      <View style={{ marginBottom: 16 }}>
-        <Text>
-          <Text style={{ fontWeight: "bold" }}>Instructor:</Text> {activity.instructor}
-        </Text>
-        <Text>
-          <Text style={{ fontWeight: "bold" }}>Precio:</Text> {activity.price}€
-        </Text>
-        <Text>
-          <Text style={{ fontWeight: "bold" }}>Duración:</Text> {activity.duration} minutos
-        </Text>
-        <Text>
-          <Text style={{ fontWeight: "bold" }}>Idioma:</Text> {activity.language}
-        </Text>
-        <Text>
-          <Text style={{ fontWeight: "bold" }}>Categoría:</Text> {activity.category}
-        </Text>
-        <Text>
-          <Text style={{ fontWeight: "bold" }}>Tipo:</Text> {activity.type}
-        </Text>
-        <Text>
-          <Text style={{ fontWeight: "bold" }}>Cupo máximo:</Text> {activity.limit} personas
-        </Text>
-        <Text>
-          <Text style={{ fontWeight: "bold" }}>Material incluido:</Text>{" "}
-          {activity.includes_material ? "Sí" : "No"}
-        </Text>
-      </View>
-      <View style={{ marginBottom: 24 }}>
-        <Text style={{ fontWeight: "bold", marginBottom: 8 }}>
-          Fechas disponibles:
-        </Text>
-        <View>
-          {activity.available_dates?.map((date, index) => (
-            <Text key={index} style={{ marginLeft: 16, marginBottom: 4 }}>
-              • {new Date(date).toLocaleDateString()}
-            </Text>
-          ))}
+      <ScrollView>
+        <View className="flex-1 flex-column bg-white gap-4">
+          <ScrollView horizontal>
+            {activity.images?.map((imgUrl, index) => (
+              <Image
+                key={index}
+                source={{ uri: activity.images?.[0] }}
+                style={{
+                  width: 200,
+                  height: 150,
+                  borderRadius: 8,
+                  marginRight: 8,
+                  backgroundColor: "#eee",
+                }}
+                accessibilityLabel={`Actividad ${index}`}
+              />
+            ))}
+          </ScrollView>
+          <Text >{activity.long_description}</Text>
+          <View className="flex flex-row gap-2 mb-4 justify-center align-items-center">
+            <View className="flex flex-col">
+              <Text>
+                <Text className="font-bold text-[#FFA500]">Instructor:</Text> {activity.instructor}
+              </Text>
+              <Text>
+                <Text className="font-bold text-[#FFA500]">Precio:</Text> {activity.price}€
+              </Text>
+              <Text>
+                <Text className="font-bold text-[#FFA500]">Duración:</Text> {activity.duration} minutos
+              </Text>
+              <Text>
+                <Text className="font-bold text-[#FFA500]">Idioma:</Text> {activity.language}
+              </Text>
+              <Text>
+                <Text className="font-bold text-[#FFA500]">Categoría:</Text> {activity.category}
+              </Text>
+              <Text>
+                <Text className="font-bold text-[#FFA500]">Tipo:</Text> {activity.type}
+              </Text>
+              <Text>
+                <Text className="font-bold text-[#FFA500]">Cupo máximo:</Text> {activity.limit} personas
+              </Text>
+              <Text>
+                <Text className="font-bold text-[#FFA500]">Material incluido:</Text>{" "}
+                {activity.includes_material ? "Sí" : "No"}
+              </Text>
+            </View>
+            <View className="">
+              <Text className="font-bold text-[#2E8B57]">
+                Fechas disponibles:
+              </Text>
+              <View>
+                {activity.available_dates?.map((date, index) => (
+                  <Text key={index}>
+                    • {new Date(date).toLocaleDateString()}
+                  </Text>
+                ))}
+              </View>
+            </View>
+          </View>
+          <View className="">
+            <BotonPrincipal
+              onPress={() =>
+                router.push(`/activities/${activity.activity_id}/reserve`)
+              }
+            >
+              Reservar
+            </BotonPrincipal>
+          </View>
         </View>
-      </View>
-      <BotonPrincipal
-        onPress={() =>
-          router.push(`/activities/${activity.activity_id}/reserve`)
-        }
-      >
-        Reservar
-      </BotonPrincipal>
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 };
 

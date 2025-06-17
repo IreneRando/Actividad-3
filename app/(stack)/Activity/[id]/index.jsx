@@ -16,53 +16,58 @@ const Activity = () => {
   );
 
   return (
-    <ScrollView className="p-4">
-      <Text className="text-2xl font-bold mb-4">Actividades Disponibles</Text>
+    <View className="flex-1 p-4 gap-4">
+      <Text className="font-semibold text-xl">Actividades Disponibles</Text>
+      <ScrollView>
+        <View className="flex-1 gap-4">
+        <View className="flex-1 gap-4">
+          <TextInput
+            value={search}
+            onChangeText={setSearch}
+            placeholder="Buscar actividad..."
+            className="border border-gray-300 rounded-lg bg-white"
+          />
 
-      <View className="mb-6">
-        <TextInput
-          value={search}
-          onChangeText={setSearch}
-          placeholder="Buscar actividad..."
-          className="border border-gray-300 rounded-md px-4 py-2 mb-4"
-        />
+          <View className="border border-gray-300 rounded-lg bg-white">
+            <Picker
+              selectedValue={category}
+              onValueChange={(value) => setCategory(value)}
+            >
+              <Picker.Item label="Todas las categorías" value="" />
+              <Picker.Item label="Bienestar" value="bienestar" />
+              <Picker.Item label="Gastronomía" value="gastronomia" />
+              <Picker.Item label="Arte" value="arte" />
+              <Picker.Item label="Aventura" value="aventura" />
+              <Picker.Item label="Cultura" value="cultura" />
+            </Picker>
+          </View>
 
-        <View>
-          <Picker
-            selectedValue={category}
-            onValueChange={(value) => setCategory(value)}
-          >
-            <Picker.Item label="Todas las categorías" value="" />
-            <Picker.Item label="Bienestar" value="bienestar" />
-            <Picker.Item label="Gastronomía" value="gastronomia" />
-            <Picker.Item label="Arte" value="arte" />
-            <Picker.Item label="Aventura" value="aventura" />
-            <Picker.Item label="Cultura" value="cultura" />
-          </Picker>
+          <TextInput
+            value={maxPrice}
+            onChangeText={setMaxPrice}
+            placeholder="Precio máximo"
+            keyboardType="numeric"
+            className="border border-gray-300 rounded-lg bg-white"
+          />
         </View>
 
-        <TextInput
-          value={maxPrice}
-          onChangeText={setMaxPrice}
-          placeholder="Precio máximo"
-          keyboardType="numeric"
-          className="border border-gray-300 rounded-md px-4 py-2"
-        />
-      </View>
 
-      {loading && <Text>Cargando actividades...</Text>}
-      {error && <Text className="text-red-500">Error: {error}</Text>}
-      {!loading && !error && activities.length === 0 && (
-        <Text>No se encontraron actividades.</Text>
-      )}
+        {loading && <Text>Cargando actividades...</Text>}
+        {error && <Text className="text-red-500">Error: {error}</Text>}
+        {!loading && !error && activities.length === 0 && (
+          <Text>No se encontraron actividades.</Text>
+        )}
 
-      <View className="gap-4">
-        {activities.map((activity) => (
-          <ActivityCard key={activity.activity_id} activity={activity} />
-        ))}
-      </View>
-    </ScrollView>
+        <View className="gap-4">
+          {activities.map((activity) => (
+            <ActivityCard key={activity.activity_id} activity={activity} />
+          ))}
+        </View>
+        </View>
+      </ScrollView>
+    </View>
   );
+
 };
 
 export default Activity;
