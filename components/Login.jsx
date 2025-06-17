@@ -18,7 +18,7 @@ export default function Login() {
       const user = users.find(u => u.email === email && u.password === password);
       if (user) {
         login(user);
-        router.replace('/tabs/profile'); // o la ruta que corresponda a tu perfil
+        router.replace('/tabs/Profile'); // o la ruta que corresponda a tu perfil
       } else {
         setError('Credenciales incorrectas');
       }

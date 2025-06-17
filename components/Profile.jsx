@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { View, Text, ScrollView, TouchableOpacity, Alert, Button } from 'react-native';
-import { useAuth } from '../context/AuthContext';
+import React, { useState, useContext } from 'react';
+import { View, Text, ScrollView, TouchableOpacity, Alert, Button, SafeAreaView } from 'react-native';
+import { AuthContext } from '../context/AuthContext';
 import useUsuario from '../hooks/useUsuario';
 import { deleteReservation } from '../api/api';
 import { router } from 'expo-router';
 
 export default function Profile() {
-  const { user, logout } = useAuth();
+  const { user, logout } = useContext(AuthContext);
   const { reservas, setReservas, activities, loading } = useUsuario(user);
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [openIndex, setOpenIndex] = useState(null);
 
   if (!user) {
     return (
@@ -91,6 +91,7 @@ export default function Profile() {
   }
 
   return (
+    <SafeAreaView>
     <ScrollView contentContainerStyle={{ padding: 20 }} className="bg-gray-100">
       <Text className="text-2xl font-bold mb-4">Perfil del usuario</Text>
       <Text><Text className="font-bold">Nombre:</Text> {user.name}</Text>
@@ -105,5 +106,6 @@ export default function Profile() {
         <Button title="Cerrar sesión" onPress={handleLogout} color="#cc0000" />
       </View>
     </ScrollView>
+    </SafeAreaView>
   );
 }
