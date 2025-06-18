@@ -58,35 +58,44 @@ const [store, setStore] = useState(null);
     </SafeAreaView>
   );
 }
-
 const styles = StyleSheet.create({
-  loadingContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    paddingTop: 100,
-  },
-  loadingText: {
-    marginTop: 12,
-    fontSize: 16,
-  },
-  container: {
-    padding: 20,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: "600",
-    marginBottom: 10,
-  },
-  subtitle: {
-    marginTop: 20,
-    fontWeight: "600",
-    fontSize: 16,
-  },
-  paragraph: {
-    fontSize: 14,
-    marginTop: 4,
-  },
+    loadingContainer: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        paddingTop: 100,
+        backgroundColor: "#fff",
+    },
+    loadingText: {
+        marginTop: 12,
+        fontSize: 16,
+        color: "#2E8B57",
+        fontWeight: "500",
+    },
+    container: {
+        paddingVertical: 30,
+        paddingHorizontal: 24,
+        backgroundColor: "#ffffff",
+    },
+    title: {
+        fontSize: 28,
+        fontWeight: "700",
+        color: "#2E8B57",
+        marginBottom: 20,
+        textAlign: "center",
+    },
+    subtitle: {
+        marginTop: 24,
+        fontWeight: "600",
+        fontSize: 18,
+        color: "#2E8B57",
+        marginBottom: 6,
+    },
+    paragraph: {
+        fontSize: 15,
+        lineHeight: 22,
+        color: "#333",
+        marginBottom: 10,
+    },
 });
-
 export default AboutUsTab;

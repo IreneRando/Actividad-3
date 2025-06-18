@@ -109,12 +109,14 @@ const ActivityDetail = () => {
           </View>
           <View className="">
             <BotonPrincipal
-              onPress={() =>
-                router.push(`/activities/${activity.activity_id}/reserve`)
-              }
+                onPress={() =>
+                    router.push(`/tabs/(stack)/Activity/ActivityDetail/${activity.activity_id}/booking`)
+                }
             >
               Reservar
             </BotonPrincipal>
+
+
           </View>
         </View>
       </ScrollView>

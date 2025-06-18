@@ -25,7 +25,7 @@ const TabsLayout = (props) => {
       <Tabs.Screen
         name="AboutUs/index"
         options={{
-          title: "Actividades",
+          title: "Sobre Nosotros",
           tabBarIcon: ({ color }) => (
             <FontAwesome size={28} name="image" color={color} />
           ),
