@@ -7,6 +7,7 @@ import { deleteReservation } from '../api/api';
 import BotonPrincipal from './BotonPrincipal';
 import { FontAwesome } from '@expo/vector-icons';
 import { router } from 'expo-router';
+import * as Haptics from 'expo-haptics';
 
 export default function Profile() {
   const { user, logout } = useContext(AuthContext);
@@ -14,7 +15,7 @@ export default function Profile() {
   const [openIndex, setOpenIndex] = useState(null);
 
   const handleLogout = () => {
-    logout(); // ✅ redirección eliminada
+    logout();
   };
 
   const confirmDelete = (id) => {
@@ -69,11 +70,13 @@ export default function Profile() {
                 </Text>
                 <View className="flex-row justify-between mt-4">
                   <TouchableOpacity onPress={() =>
-                      router.push(`/tabs/(stack)/Activity/${activities[index].activity_id}/ActivityDetail/[idActivity]`)
+                      router.push(`/tabs/(stack)/Activity/ActivityDetail/${activities[index].activity_id}`)
                   }>
                     <Text className="text-primary underline">Ver detalle</Text>
                   </TouchableOpacity>
-                  <TouchableOpacity onPress={() => confirmDelete(reserva.reservation_id)}>
+                  <TouchableOpacity onPress={() => {confirmDelete(reserva.reservation_id);
+                    Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+                  }}>
                     <Text className="text-red-500 underline">Eliminar reserva</Text>
                   </TouchableOpacity>
                 </View>
