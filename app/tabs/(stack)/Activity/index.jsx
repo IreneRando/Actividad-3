@@ -9,7 +9,7 @@ import { useFilteredActivities } from "../../../../hooks/useFilteredActivities";
 const Activity = () => {
   const { user } = useContext(AuthContext);
 
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState(""); 
   const [category, setCategory] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
 

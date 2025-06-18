@@ -2,7 +2,7 @@ import { Link } from "expo-router";
 import { View, Text, Image } from "react-native";
 import React from "react";
 import { router } from "expo-router";
-import BotonPrincipal from "./BotonPrincipal";
+import BotonSecundario from "./BotonSecundario";
 const ActivityCard = ({ activity }) => {
     if (!activity || !activity.activity_id || !activity.name) {
         return (
@@ -26,9 +26,9 @@ const ActivityCard = ({ activity }) => {
                         ? activity.short_description.slice(0, 100)
                         : "Sin descripcion."}
                 </Text>
-                <BotonPrincipal className="" onPress={() => router.push(`tabs/(stack)/Activity/ActivityDetail/${activity.activity_id}`)}>
+                <BotonSecundario style={{width: 20, height: 32}} onPress={() => router.push(`tabs/(stack)/Activity/ActivityDetail/${activity.activity_id}`)}>
                     Ver más
-                </BotonPrincipal>
+                </BotonSecundario>
             </View>
         </View>
     );

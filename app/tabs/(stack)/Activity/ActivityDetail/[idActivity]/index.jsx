@@ -53,7 +53,7 @@ const ActivityDetail = () => {
             {activity.images?.map((imgUrl, index) => (
               <Image
                 key={index}
-                source={{ uri: activity.images?.[0] }}
+                source={{ uri: imgUrl }}
                 style={{
                   width: 200,
                   height: 150,
@@ -66,31 +66,31 @@ const ActivityDetail = () => {
             ))}
           </ScrollView>
           <Text >{activity.long_description}</Text>
-          <View className="flex flex-row gap-2 mb-4 justify-center align-items-center">
+          <View className="flex flex-row gap-4 mb-4 justify-between border border-gray-300 rounded-xl p-4 ">
             <View className="flex flex-col">
               <Text>
-                <Text className="font-bold text-[#FFA500]">Instructor:</Text> {activity.instructor}
+                <Text className="font-bold text-[#87CEEB]">Instructor:</Text> {activity.instructor}
               </Text>
               <Text>
-                <Text className="font-bold text-[#FFA500]">Precio:</Text> {activity.price}€
+                <Text className="font-bold text-[#87CEEB]">Precio:</Text> {activity.price}€
               </Text>
               <Text>
-                <Text className="font-bold text-[#FFA500]">Duración:</Text> {activity.duration} minutos
+                <Text className="font-bold text-acento">Duración:</Text> {activity.duration} minutos
               </Text>
               <Text>
-                <Text className="font-bold text-[#FFA500]">Idioma:</Text> {activity.language}
+                <Text className="font-bold text-acento">Idioma:</Text> {activity.language}
               </Text>
               <Text>
-                <Text className="font-bold text-[#FFA500]">Categoría:</Text> {activity.category}
+                <Text className="font-bold text-acento">Categoría:</Text> {activity.category}
               </Text>
               <Text>
-                <Text className="font-bold text-[#FFA500]">Tipo:</Text> {activity.type}
+                <Text className="font-bold text-acento">Tipo:</Text> {activity.type}
               </Text>
               <Text>
-                <Text className="font-bold text-[#FFA500]">Cupo máximo:</Text> {activity.limit} personas
+                <Text className="font-bold text-acento">Cupo máximo:</Text> {activity.limit} personas
               </Text>
               <Text>
-                <Text className="font-bold text-[#FFA500]">Material incluido:</Text>{" "}
+                <Text className="font-bold text-acento">Material incluido:</Text>{" "}
                 {activity.includes_material ? "Sí" : "No"}
               </Text>
             </View>
@@ -107,11 +107,11 @@ const ActivityDetail = () => {
               </View>
             </View>
           </View>
-          <View className="">
+          <View className="justify-center items-center">
             <BotonPrincipal
-                onPress={() =>
-                    router.push(`/tabs/(stack)/Activity/ActivityDetail/${activity.activity_id}/booking`)
-                }
+              onPress={() =>
+                router.push(`/tabs/(stack)/Activity/ActivityDetail/${activity.activity_id}/booking`)
+              }
             >
               Reservar
             </BotonPrincipal>
