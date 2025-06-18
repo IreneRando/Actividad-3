@@ -1,22 +1,17 @@
 import React, { useState, useContext } from 'react';
-import { View, Text, ScrollView, TouchableOpacity, Alert, Button, SafeAreaView } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, Alert, Button } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { AuthContext } from '../context/AuthContext';
 import useUsuario from '../hooks/useUsuario';
 import { deleteReservation } from '../api/api';
 import { router } from 'expo-router';
+import BotonPrincipal from './BotonPrincipal';
+import { FontAwesome } from '@expo/vector-icons';
 
 export default function Profile() {
   const { user, logout } = useContext(AuthContext);
   const { reservas, setReservas, activities, loading } = useUsuario(user);
   const [openIndex, setOpenIndex] = useState(null);
-
-  if (!user) {
-    return (
-      <View className="p-6 items-center">
-        <Text className="text-gray-600">No hay usuario autenticado.</Text>
-      </View>
-    );
-  }
 
   const handleLogout = () => {
     logout();
@@ -56,21 +51,22 @@ export default function Profile() {
         className="border border-gray-300 rounded mb-3 overflow-hidden"
       >
         <TouchableOpacity
-          className="bg-gray-100 px-4 py-2"
+          className="bg-gray-100 px-4 py-2 flex-row justify-between"
           onPress={() => setOpenIndex(openIndex === index ? null : index)}
         >
           <Text className="font-semibold text-lg">
             {activities[index].name} - {new Date(reserva.selected_date).toLocaleDateString()}
           </Text>
+          <FontAwesome size={16} name="chevron-down" className='pl-1 pt-1' color="black" />
         </TouchableOpacity>
 
         {openIndex === index && (
           <View className="px-4 py-2 bg-white">
-            <Text><Text className="font-bold">Descripción:</Text> {activities[index].short_description}</Text>
-            <Text className="mt-2"><Text className="font-bold">Comentarios:</Text> {reserva.reservation_comments}</Text>
+            <Text className="text-lg"><Text className="font-bold">Descripción:</Text> {activities[index].short_description}</Text>
+            <Text className="mt-2 text-lg"><Text className="font-bold">Comentarios:</Text> {reserva.reservation_comments}</Text>
             <View className="flex-row justify-between mt-4">
-              <TouchableOpacity onPress={() => router.push(`/activities/${activities[index].activity_id}`)}>
-                <Text className="text-blue-600 underline">Ver detalle</Text>
+              <TouchableOpacity onPress={() => router.push(`/tabs/(stack)/Activity/${activities[index].activity_id}/ActivityDetail/[idActivity]`)}>
+                <Text className="text-primary underline">Ver detalle</Text>
               </TouchableOpacity>
               <TouchableOpacity onPress={() => confirmDelete(reserva.reservation_id)}>
                 <Text className="text-red-500 underline">Eliminar reserva</Text>
@@ -92,18 +88,20 @@ export default function Profile() {
 
   return (
     <SafeAreaView>
-    <ScrollView contentContainerStyle={{ padding: 20 }} className="bg-gray-100">
-      <Text className="text-2xl font-bold mb-4">Perfil del usuario</Text>
-      <Text><Text className="font-bold">Nombre:</Text> {user.name}</Text>
-      <Text><Text className="font-bold">Email:</Text> {user.email}</Text>
-      <Text><Text className="font-bold">Teléfono:</Text> {user.phone}</Text>
-      <Text><Text className="font-bold">Fecha de registro:</Text> {user.registration_date}</Text>
+    <ScrollView className="p-5 bg-white shadow-lg shadow-black rounded-xl mt-20">
+      <Text className="text-2xl font-bold mb-6 text-center">Perfil de usuario</Text>
+      <Text className='text-lg'><Text className="font-bold">Nombre:</Text> {user.name}</Text>
+      <Text className='text-lg'><Text className="font-bold">Email:</Text> {user.email}</Text>
+      <Text className='text-lg'><Text className="font-bold">Teléfono:</Text> {user.phone}</Text>
+      <Text className='text-lg'><Text className="font-bold">Fecha de registro:</Text> {new Date(user.registration_date).toLocaleDateString()}</Text>
 
-      <Text className="mt-6 text-lg font-semibold">Reservas:</Text>
+      <Text className="mt-6 mb-4 text-lg font-semibold">Reservas:</Text>
       {renderReservas()}
 
-      <View className="mt-8">
-        <Button title="Cerrar sesión" onPress={handleLogout} color="#cc0000" />
+      <View className="mt-8 items-center">
+        <BotonPrincipal onPress={handleLogout}>
+          Cerrar sesión
+        </BotonPrincipal>
       </View>
     </ScrollView>
     </SafeAreaView>
