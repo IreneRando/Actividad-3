@@ -4,6 +4,7 @@ import { AuthContext } from '../context/AuthContext';
 import { fetchUsers } from '../api/api';
 import BotonPrincipal from './BotonPrincipal';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import * as Haptics from 'expo-haptics';
 
 export default function Login() {
   const { login } = useContext(AuthContext);
@@ -19,6 +20,7 @@ export default function Login() {
         login(user); // ✅ solo login, sin redirección
       } else {
         setError('Credenciales incorrectas');
+        Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
       }
     } catch (err) {
       setError('Error al obtener usuario');

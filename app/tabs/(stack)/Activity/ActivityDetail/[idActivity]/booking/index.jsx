@@ -11,6 +11,7 @@ import { Picker } from '@react-native-picker/picker';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { AuthContext } from 'context/AuthContext';
 import BotonPrincipal from 'components/BotonPrincipal';
+import * as Haptics from 'expo-haptics';
 
 export default function Booking() {
     const { idActivity } = useLocalSearchParams();
@@ -51,7 +52,9 @@ export default function Booking() {
         Alert.alert(
             'Reserva confirmada',
             `Has reservado ${people} plaza(s) para "${activity.name}" el ${new Date(selectedDate).toLocaleDateString()}`,
-            [{ text: 'OK', onPress: () => router.replace('/tabs/Profile') }]
+            [{ text: 'OK', onPress: () => {router.replace('/tabs/Profile');
+                Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+            }}]
         );
     };
 
