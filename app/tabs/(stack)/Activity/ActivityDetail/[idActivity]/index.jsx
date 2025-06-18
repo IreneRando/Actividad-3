@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Text, View, Image, ScrollView, ActivityIndicator } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
-import BotonPrincipal from "../../../../../../../components/BotonPrincipal";
+import BotonPrincipal from "../../../../../../components/BotonPrincipal";
 
 const ActivityDetail = () => {
   const { idActivity } = useLocalSearchParams();

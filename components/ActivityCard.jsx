@@ -26,7 +26,7 @@ const ActivityCard = ({ activity }) => {
             ? activity.short_description.slice(0, 100)
             : "Sin descripcion."}
         </Text>
-        <BotonPrincipal className="" onPress={() => router.push('tabs/(stack)/Activity/[id]/ActivityDetail/[idActivity]', { id: activity.id })}>
+        <BotonPrincipal className="" onPress={() => router.push(`tabs/(stack)/Activity/ActivityDetail/${activity.activity_id}`)}>
           Ver más
         </BotonPrincipal>
       </View>

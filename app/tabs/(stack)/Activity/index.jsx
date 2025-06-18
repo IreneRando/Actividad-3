@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useFilteredActivities } from "../../../../../hooks/useFilteredActivities";
-import ActivityCard from "../../../../../components/ActivityCard";
+import { useFilteredActivities } from "../../../../hooks/useFilteredActivities";
+import ActivityCard from "../../../../components/ActivityCard";
 import { View, Text, TextInput, ScrollView } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 
