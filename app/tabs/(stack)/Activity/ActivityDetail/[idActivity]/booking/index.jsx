@@ -75,8 +75,8 @@ export default function Booking() {
                 {activity.name}
             </Text>
 
-            <Text className="text-base font-medium mb-1 text-gray-800">Fecha:</Text>
-            <View className="border border-gray-300 rounded-xl bg-white mb-5 overflow-hidden">
+            <Text style={{ marginHorizontal: 20 }} className="text-base font-medium mb-1 text-gray-800">Fecha:</Text>
+            <View style={{ marginHorizontal: 20 }} className="border border-gray-300  rounded-xl bg-white mb-5 overflow-hidden">
                 <Picker
                     selectedValue={selectedDate}
                     onValueChange={(value) => setSelectedDate(value)}
@@ -95,21 +95,23 @@ export default function Booking() {
                 </Picker>
             </View>
 
-            <Text className="text-base font-medium mb-1 text-gray-800">Número de personas:</Text>
+            <Text style={{ marginHorizontal: 20 }} className="text-base font-medium mb-1 text-gray-800">Número de personas:</Text>
             <TextInput
                 keyboardType="numeric"
                 value={people}
                 onChangeText={setPeople}
-                className="border border-gray-300 rounded-xl bg-white px-4 py-3 mb-5 text-base text-gray-900"
+                style={{ marginHorizontal: 20 }}
+                className="border border-gray-300 mx-4 rounded-xl bg-white px-4 py-3 mb-5 text-base text-gray-900"
             />
 
-            <Text className="text-base font-medium mb-1 text-gray-800">Deja un comentario:</Text>
+            <Text style={{ marginHorizontal: 20 }} className="text-base font-medium mb-1 text-gray-800">Deja un comentario:</Text>
             <TextInput
                 multiline
                 numberOfLines={5}
                 placeholder="Comentario"
                 value={comment}
                 onChangeText={setComment}
+                style={{ marginHorizontal: 20 }}
                 className="border border-gray-300 rounded-xl bg-white px-4 py-3 mb-6 text-base text-gray-900"
                 textAlignVertical="top"
             />
