@@ -31,6 +31,7 @@ export default function Profile() {
               try {
                 await deleteReservation(id);
                 setReservas(prev => prev.filter(r => r.reservation_id !== id));
+                Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
               } catch (error) {
                 Alert.alert('Error', 'Hubo un error al eliminar la reserva.');
               }
@@ -74,9 +75,7 @@ export default function Profile() {
                   }>
                     <Text className="text-primary underline">Ver detalle</Text>
                   </TouchableOpacity>
-                  <TouchableOpacity onPress={() => {confirmDelete(reserva.reservation_id);
-                    Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-                  }}>
+                  <TouchableOpacity onPress={() => confirmDelete(reserva.reservation_id)}>
                     <Text className="text-red-500 underline">Eliminar reserva</Text>
                   </TouchableOpacity>
                 </View>

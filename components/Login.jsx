@@ -17,7 +17,7 @@ export default function Login() {
       const users = await fetchUsers();
       const user = users.find(u => u.email === email && u.password === password);
       if (user) {
-        login(user); // ✅ solo login, sin redirección
+        login(user);
       } else {
         setError('Credenciales incorrectas');
         Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);

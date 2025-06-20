@@ -24,9 +24,9 @@ const [store, setStore] = useState(null);
   if (loading) {
     return (
         <SafeAreaView>
-            <View style={styles.loadingContainer}>
+            <View className="flex-1 items-center justify-center">
                 <ActivityIndicator size="large" color="#2E8B57" />
-                <Text style={styles.loadingText}>Cargando...</Text>
+                <Text className="text-xl font-bold mt-20">Cargando...</Text>
             </View>
       </SafeAreaView>
     );
@@ -36,66 +36,26 @@ const [store, setStore] = useState(null);
 
   return (
     <SafeAreaView>
-        <ScrollView contentContainerStyle={styles.container}>
-        <Text style={styles.title}>{store.name}</Text>
-        <Text style={styles.paragraph}>{store?.additional_info?.description}</Text>
+        <ScrollView className="p-4">
+        <Text className="text-2xl font-bold text-primary mt-4">{store.name}</Text>
+        <Text className="text-lg mt-4">{store?.additional_info?.description}</Text>
 
-        <Text style={styles.subtitle}>Dirección:</Text>
-        <Text style={styles.paragraph}>
+        <Text className="text-xl font-bold mt-4">Dirección:</Text>
+        <Text className="text-lg mt-2">
             {store.address.street} {store.address.number}, {store.address.city}, {store.address.country}, {store.address.postal_code}
         </Text>
 
-        <Text style={styles.subtitle}>Contacto:</Text>
-        <Text style={styles.paragraph}>{store.contact.phone}</Text>
-        <Text style={styles.paragraph}>{store.contact.email}</Text>
-        <Text style={styles.paragraph}>{store.contact.website}</Text>
+        <Text className="text-xl font-bold mt-4">Contacto:</Text>
+        <Text className="text-lg mt-2">{store.contact.phone}</Text>
+        <Text className="text-lg mt-2">{store.contact.email}</Text>
+        <Text className="text-lg mt-2">{store.contact.website}</Text>
 
-        <Text style={styles.subtitle}>Horario:</Text>
-        <Text style={styles.paragraph}>Lunes-Viernes: {store.hours.monday}</Text>
-        <Text style={styles.paragraph}>Sábado: {store.hours.saturday}</Text>
-        <Text style={styles.paragraph}>Domingo: {store.hours.sunday}</Text>
+        <Text className="text-xl font-bold mt-4">Horario:</Text>
+        <Text className="text-lg mt-2">Lunes-Viernes: {store.hours.monday}</Text>
+        <Text className="text-lg mt-2">Sábado: {store.hours.saturday}</Text>
+        <Text className="text-lg mt-2">Domingo: {store.hours.sunday}</Text>
         </ScrollView>
     </SafeAreaView>
   );
 }
-const styles = StyleSheet.create({
-    loadingContainer: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        paddingTop: 100,
-        backgroundColor: "#fff",
-    },
-    loadingText: {
-        marginTop: 12,
-        fontSize: 16,
-        color: "#2E8B57",
-        fontWeight: "500",
-    },
-    container: {
-        paddingVertical: 30,
-        paddingHorizontal: 24,
-        backgroundColor: "#ffffff",
-    },
-    title: {
-        fontSize: 28,
-        fontWeight: "700",
-        color: "#2E8B57",
-        marginBottom: 20,
-        textAlign: "center",
-    },
-    subtitle: {
-        marginTop: 24,
-        fontWeight: "600",
-        fontSize: 18,
-        color: "#2E8B57",
-        marginBottom: 6,
-    },
-    paragraph: {
-        fontSize: 15,
-        lineHeight: 22,
-        color: "#333",
-        marginBottom: 10,
-    },
-});
 export default AboutUsTab;
